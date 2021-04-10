@@ -4,7 +4,7 @@ import './App.css';
 
 export default class App extends React.Component {
 
-   constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
       campo:'',
@@ -19,7 +19,7 @@ export default class App extends React.Component {
       operacion:'',
       resultado:''
     });
-  } 
+  }
 
   addNumber(number) {
     if(this.state.resultado === 'pendiente'){
@@ -28,7 +28,7 @@ export default class App extends React.Component {
       });
     } else {
       this.clear();
-      this.state({
+      this.setState({
         campo:number,
         resultado: 'pendiente'
       });
@@ -36,36 +36,36 @@ export default class App extends React.Component {
   }
 
   setOperation(symbol) {
-    //console.log((`Simbolo de operacion ${symbol}`);
+    // console.log(`Simbolo de operacion ${symbol}`);
     if(this.state.operacion === ''){
       this.setState({
         campo: this.state.campo + symbol,
         operacion: symbol
       })
-      } else {
-        alert('Ya ha seleccionado una operación mamtemática!');
-      }
+    } else {
+      alert('Ya ha seleccionado una operación matemática!');
     }
+  }
 
-  getResult(){
+  getResult() {
     if(this.state.operacion !== ''){
       let numeros = this.state.campo.split(this.state.operacion);
       console.log(numeros);
       if(numeros[1] === ''){
-        alert('Ingresar segundo numero a operar !');
-      }else {
+        alert('Ingrese el segundo numero a operar!');
+      } else {
         let resultado = this.executeOperation(parseInt(numeros[0]), parseInt(numeros[1]));
         this.setState({campo: this.state.campo + ' = ' + resultado});
       }
-    
+
     } else {
-      // No ha seleccionado nungun operador 
+      // No ha seleccionado ningun operador
       alert('Seleccione una operación matemática!');
     }
   }
-
+  
   executeOperation(num1, num2) {
-    let resultado = 0; 
+    let resultado = 0;
     switch(this.state.operacion) {
       case 'X':
         resultado = (num1 * num2);
@@ -81,7 +81,7 @@ export default class App extends React.Component {
         break;
       default:
         console.log('default');
-        break;         
+        break;
     }
     this.setState({resultado:'obtenido'});
     return resultado;
@@ -89,95 +89,95 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <Container maxWidtch="sm">
+      <Container maxWidth="sm">
         <Grid>
           <TextField id="outlined-basic" label="Ingrese un valor" variant="outlined" value={this.state.campo} fullWidth/>
         </Grid>
-        <Grid Container spacing={3}>
+        <Grid container spacing={3}>
           <Grid item xs={3}>
-            <Button variant="contained" color="secundary" fullWidth onClick={()=>{this.addNumber('7')}}>
+            <Button variant="contained" color="secondary" fullWidth onClick={()=>{this.addNumber('7')}}>
               7
             </Button>
-          </Grid>  
+          </Grid>
           <Grid item xs={3}>
-            <Button variant="contained" color="secundary" fullWidth onClick={()=>{this.addNumber('8')}}>
+            <Button variant="contained" color="secondary" fullWidth onClick={()=>{this.addNumber('8')}}>
               8
             </Button>
           </Grid>
           <Grid item xs={3}>
-            <Button variant="contained" color="secundary" fullWidth onClick={()=>{this.addNumber('9')}}>
+            <Button variant="contained" color="secondary" fullWidth onClick={()=>{this.addNumber('9')}}>
               9
             </Button>
           </Grid>
           <Grid item xs={3}>
-            <Button variant="contained" color="secundary" fullWidth onClick={()=>{this.addNumber('X')}}>
+            <Button variant="contained" color="secondary" fullWidth onClick={()=>{this.setOperation('X')}}>
               X
             </Button>
           </Grid>
           <Grid item xs={3}>
-            <Button variant="contained" color="secundary" fullWidth onClick={()=>{this.addNumber('4')}}>
+            <Button variant="contained" color="secondary" fullWidth onClick={()=>{this.addNumber('4')}}>
               4
             </Button>
           </Grid>
           <Grid item xs={3}>
-            <Button variant="contained" color="secundary" fullWidth onClick={()=>{this.addNumber('5')}}>
+            <Button variant="contained" color="secondary" fullWidth onClick={()=>{this.addNumber('5')}}>
               5
             </Button>
           </Grid>
           <Grid item xs={3}>
-            <Button variant="contained" color="secundary" fullWidth onClick={()=>{this.addNumber('6')}}>
+            <Button variant="contained" color="secondary" fullWidth onClick={()=>{this.addNumber('6')}}>
               6
             </Button>
           </Grid>
           <Grid item xs={3}>
-            <Button variant="contained" color="secundary" fullWidth onClick={()=>{this.addNumber('-')}}>
+            <Button variant="contained" color="secondary" fullWidth onClick={()=>{this.setOperation('-')}}>
               -
             </Button>
           </Grid>
           <Grid item xs={3}>
-            <Button variant="contained" color="secundary" fullWidth onClick={()=>{this.addNumber('1')}}>
+            <Button variant="contained" color="secondary" fullWidth onClick={()=>{this.addNumber('1')}}>
               1
             </Button>
           </Grid>
           <Grid item xs={3}>
-            <Button variant="contained" color="secundary" fullWidth onClick={()=>{this.addNumber('2')}}>
+            <Button variant="contained" color="secondary" fullWidth onClick={()=>{this.addNumber('2')}}>
               2
             </Button>
           </Grid>
           <Grid item xs={3}>
-            <Button variant="contained" color="secundary" fullWidth onClick={()=>{this.addNumber('3')}}>
+            <Button variant="contained" color="secondary" fullWidth onClick={()=>{this.addNumber('3')}}>
               3
             </Button>
           </Grid>
           <Grid item xs={3}>
-            <Button variant="contained" color="secundary" fullWidth onClick={()=>{this.addNumber('+')}}>
+            <Button variant="contained" color="secondary" fullWidth onClick={()=>{this.setOperation('+')}}>
               +
             </Button>
           </Grid>
           <Grid item xs={3}>
-            <Button variant="contained" color="secundary" fullWidth onClick={()=>{this.addNumber('CE')}}>
+            <Button variant="contained" color="secondary" fullWidth onClick={()=>{this.clear()}}>
               CE
             </Button>
           </Grid>
           <Grid item xs={3}>
-            <Button variant="contained" color="secundary" fullWidth onClick={()=>{this.addNumber('0')}}>
+            <Button variant="contained" color="secondary" fullWidth onClick={()=>{this.addNumber('0')}}>
               0
             </Button>
           </Grid>
           <Grid item xs={3}>
-            <Button variant="contained" color="secundary" fullWidth onClick={()=>{this.addNumber('=')}}>
+            <Button variant="contained" color="secondary" fullWidth onClick={()=>{this.getResult()}}>
               =
             </Button>
           </Grid>
           <Grid item xs={3}>
-            <Button variant="contained" color="secundary" fullWidth onClick={()=>{this.addNumber('/')}}>
+            <Button variant="contained" color="secondary" fullWidth onClick={()=>{this.setOperation('/')}}>
               /
             </Button>
           </Grid>
         </Grid>
-      </Container> 
+      </Container>
     );
   }
-} 
+}
 
-//App;
+// App;
